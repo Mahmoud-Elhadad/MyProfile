@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ============================================================
+         SEO / SHARING — EDIT THESE PLACEHOLDERS
+         See README.md → "Editing site text and metadata".
+         Keep the page title unique and under ~60 characters.
+         ============================================================ -->
+    <title>Mahmoud Elhadad — Backend Developer (PHP / Laravel)</title>
+    <meta
+      name="description"
+      content="Portfolio of Mahmoud Elhadad, a PHP / Laravel backend developer building e-commerce platforms with multi-guard auth, queues and query caching."
+    />
+    <meta name="author" content="Mahmoud Elhadad" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://mahmoud-elhadad.github.io/MyPortfolio/" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0b1016" />
+
+    <!-- Open Graph (Facebook, LinkedIn, Slack, WhatsApp previews) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mahmoud-elhadad.github.io/MyPortfolio/" />
+    <meta property="og:image" content="https://mahmoud-elhadad.github.io/MyPortfolio/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mahmoud Elhadad, Backend Developer (PHP / Laravel)" />
+    <meta property="og:site_name" content="Mahmoud Elhadad — Portfolio" />
+    <meta property="og:title" content="Mahmoud Elhadad — Backend Developer (PHP / Laravel)" />
+    <meta
+      property="og:description"
+      content="Laravel, PHP, MySQL and e-commerce platforms. Open to junior backend roles."
+    />
+<!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://mahmoud-elhadad.github.io/MyPortfolio/assets/og-image.png" />
+    <meta name="twitter:title" content="Mahmoud Elhadad — Backend Developer (PHP / Laravel)" />
+    <meta
+      name="twitter:description"
+      content="Laravel, PHP, MySQL and e-commerce platforms. Open to junior backend roles."
+    />
+
+    <!-- ============================================================
+         FAVICON PLACEHOLDER
+         Replace assets/favicon.svg with your own icon (keep the name,
+         or update the two href values below). Instructions in README.md.
+         ============================================================ -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="assets/favicon.svg" />
+
+    <!-- Fonts: intentionally none. The site uses a system font stack only,
+         so there are no external requests, no FOUT and no build step. -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Applies the saved theme before first paint so there is no flash of
+         the wrong colours. Small, dependency-free, safe to leave as is. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('portfolio-theme');
+          var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+          document.documentElement.dataset.theme =
+            saved === 'light' || saved === 'dark' ? saved : prefersLight ? 'light' : 'dark';
+        } catch (e) {
+          /* private mode / storage disabled — keep the HTML default */
+        }
+      })();
+    </script>
+
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Static anchor for the "back to top" links. It must NOT live on the
+         sticky header: a stuck element reports its current on-screen position,
+         so #top would jump to wherever you already are instead of to 0. -->
+    <span id="top" class="top-anchor" aria-hidden="true"></span>
+
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ===================== HEADER / NAVIGATION ===================== -->
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="#top" aria-label="Mahmoud Elhadad — back to top of page">
+          <span class="brand__mark" aria-hidden="true">&lt;/&gt;</span>
+          <span class="brand__name" data-bind="name">Mahmoud Elhadad</span>
+          <span class="brand__role" data-bind="role_short">Backend Developer</span>
+        </a>
+
+        <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+          <ul class="primary-nav__list">
+            <li><a class="nav-link" href="#hero">Home</a></li>
+            <li><a class="nav-link" href="#about">About</a></li>
+            <li><a class="nav-link" href="#skills">Skills</a></li>
+            <li><a class="nav-link" href="#projects">Projects</a></li>
+            <li><a class="nav-link" href="#resume">Resume</a></li>
+            <li><a class="nav-link nav-link--contact" href="#contact">Contact</a></li>
+          </ul>
+          <div class="primary-nav__extras">
+            <button
+              type="button"
+              class="icon-button theme-toggle"
+              id="theme-toggle"
+              aria-pressed="false"
+              aria-label="Switch to light theme"
+            >
+              <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true">◐</span>
+              <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">◑</span>
+              <span class="theme-toggle__label" id="theme-toggle-label">Dark</span>
+            </button>
+            <a class="button button--primary button--small nav-cta" href="#contact">Hire me</a>
+          </div>
+        </nav>
+
+        <div class="header-controls">
+          <button
+            type="button"
+            class="icon-button theme-toggle theme-toggle--mobile"
+            id="theme-toggle-mobile"
+            aria-pressed="false"
+            aria-label="Switch to light theme"
+          >
+            <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true">◐</span>
+            <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">◑</span>
+            <span class="visually-hidden">Theme</span>
+          </button>
+          <button
+            type="button"
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+            aria-label="Open navigation menu"
+          >
+            <span class="menu-toggle__bars" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span class="menu-toggle__text" id="menu-toggle-text">Menu</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Reading progress. Decorative: it repeats information the scroll bar
+           already gives, so it is hidden from assistive tech. -->
+      <div class="scroll-progress" aria-hidden="true">
+        <span class="scroll-progress__bar" id="scroll-progress-bar"></span>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ===================== HERO ===================== -->
+      <section class="section section--hero" id="hero" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span aria-hidden="true">●</span> Open to junior backend roles</p>
+
+            <h1 class="hero-title" id="hero-title">
+              <span data-bind="name">Mahmoud Elhadad</span>
+              <span class="hero-title__accent">Backend Developer (PHP / Laravel)</span>
+            </h1>
+
+            <p class="lead" data-bind="hero_intro">
+              Backend developer focused on PHP and Laravel, building e-commerce platforms.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button--primary" href="#projects">View projects</a>
+              <a class="button button--ghost" href="assets/Mahmoud_Elhadad_CV.pdf" download="Mahmoud_Elhadad_CV.pdf">Download CV</a>
+              <a class="button button--ghost" href="#contact">Contact me</a>
+            </div>
+
+            <ul class="hero-links" id="hero-links" aria-label="Profiles and source code">
+              <!-- Rendered by js/main.js from js/data.js → profile.links -->
+            </ul>
+
+            </div>
+
+          <!-- ===================== YOUR PHOTO + CODE CARD =====================
+               Photo slot: set profile.photo in js/data.js to a file you put in
+               assets/ (e.g. assets/me.jpg). Until you do, this frame stays an
+               honest empty placeholder — no stock photo, no invented portrait.
+               The button under the frame previews an image on THIS device only;
+               nothing is uploaded, sent or stored on any server. -->
+          <div class="hero-aside">
+            <figure class="portrait" id="portrait" data-photo-state="empty">
+              <div class="portrait__frame">
+                <!-- No src on purpose: js/main.js only sets it when a real file exists,
+                     so an empty slot never triggers a broken-image request. -->
+                <img class="portrait__img" id="portrait-img" alt="" width="440" hidden />
+
+                <!-- Hover / tap reveal: second photo fades in over the first (shown whole, never cropped) -->
+                <div class="portrait__alt" aria-hidden="true">
+                  <img class="portrait__alt-bg" src="assets/me-hover.jpg" alt="" loading="lazy" />
+                  <img class="portrait__alt-img" src="assets/me-hover.jpg" alt="" loading="lazy" />
+                </div>
+
+                <div class="portrait__empty" id="portrait-empty">
+                  <svg class="portrait__icon" viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
+                    <circle cx="24" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M8 42c0-8.8 7.2-16 16-16s16 7.2 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  <p class="portrait__empty-label" id="portrait-empty-label">Mahmoud Elhadad</p>
+                </div>
+
+                <p class="portrait__badge" id="portrait-badge" hidden>Local preview only — not uploaded</p>
+              </div>
+
+              <figcaption class="portrait__caption">
+                <p class="portrait__hint" id="portrait-hint">
+                  Set <code>profile.photo</code> in <code>js/data.js</code> to something like
+                  <code>assets/me.jpg</code>, then put the file in the <code>assets/</code> folder.
+                  Details in <code>assets/README.md</code>.
+                </p>
+
+                <p class="portrait__tools">
+                  <label class="portrait__pick" for="portrait-file">
+                    Preview a photo from this device
+                    <input class="visually-hidden" type="file" id="portrait-file" accept="image/*" />
+                  </label>
+                  <button type="button" class="link-button" id="portrait-clear" hidden>Remove preview</button>
+                </p>
+
+                <p class="portrait__note">
+                  This button does not upload anything. GitHub Pages serves static files, so the
+                  preview is kept in this browser only and visitors see just the file you commit.
+                </p>
+
+                <p class="portrait__status" id="portrait-status" role="status" aria-live="polite"></p>
+              </figcaption>
+            </figure>
+
+            <!-- Decorative code panel: conveys a technical feel, carries no information. -->
+            <div class="code-card" aria-hidden="true">
+              <div class="code-card__bar">
+                <span class="dot dot--a"></span><span class="dot dot--b"></span><span class="dot dot--c"></span>
+                <span class="code-card__file">routes/api.php</span>
+              </div>
+              <pre class="code-card__body"><code><span class="tok-c">// Mahmoud Elhadad — Laravel</span>
+<span class="tok-k">Route</span>::<span class="tok-f">middleware</span>(<span class="tok-s">'auth:sanctum'</span>)
+    -><span class="tok-f">group</span>(<span class="tok-k">static</span> (<span class="tok-k">function</span> ()) {
+
+    <span class="tok-k">Route</span>::<span class="tok-f">apiResource</span>(<span class="tok-s">'projects'</span>, <span class="tok-t">ProjectController</span>::<span class="tok-k">class</span>);
+
+    });</code></pre>
+              <p class="code-card__caption">Illustrative snippet, not taken from a specific project.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================== ABOUT ===================== -->
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <header class="section__head">
+            <p class="section__index" aria-hidden="true">01</p>
+            <h2 class="section__title" id="about-title">About</h2>
+            <p class="section__summary" data-bind="about_summary">
+              Laravel and PHP, with an eye on authorization, clean queries and performance.
+            </p>
+          </header>
+
+          <div class="about-grid">
+            <div class="about-copy">
+              <p data-bind="about_bio_1">
+                I am a backend developer working mainly with PHP and Laravel.
+              </p>
+              <p data-bind="about_bio_2"></p>
+
+              <ul class="focus-list" id="about-focus" aria-label="Focus areas">
+                <!-- Rendered from js/data.js → profile.focus -->
+              </ul>
+            </div>
+
+            <aside class="panel" aria-labelledby="principles-title">
+              <h3 class="panel__title" id="principles-title">How I build</h3>
+              <ul class="principles" id="about-principles">
+                <!-- Rendered from js/data.js → profile.principles -->
+              </ul>
+            </aside>
+          </div>
+
+          <!-- Work history / education / certifications: hidden until you fill it in. -->
+          <div class="timeline-block" id="timeline-block" hidden>
+            <h3 class="subhead">Education &amp; certifications</h3>
+            <div class="credentials" id="timeline"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SKILLS ===================== -->
+      <section class="section" id="skills" aria-labelledby="skills-title">
+        <div class="container">
+          <header class="section__head">
+            <p class="section__index" aria-hidden="true">02</p>
+            <h2 class="section__title" id="skills-title">Skills</h2>
+            <p class="section__summary">
+              The tools and technologies I use day to day.
+            </p>
+          </header>
+
+          <div class="skills-grid" id="skills-grid">
+            <!-- Rendered from js/data.js → skillCategories -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PROJECTS ===================== -->
+      <section class="section" id="projects" aria-labelledby="projects-title">
+        <div class="container">
+          <header class="section__head">
+            <p class="section__index" aria-hidden="true">03</p>
+            <h2 class="section__title" id="projects-title">Projects</h2>
+            <p class="section__summary" data-bind="projects_summary">
+              E-commerce platforms I built with Laravel and PHP.
+            </p>
+          </header>
+
+          <div class="filter-bar">
+            <div class="filter-bar__labels">
+              <h3 class="filter-bar__title" id="filter-legend">Filter projects</h3>
+              <p class="filter-bar__help" id="filter-help">
+                Show only the projects you care about.
+              </p>
+            </div>
+            <div class="filters" id="filters" role="group" aria-labelledby="filter-legend">
+              <!-- Filter buttons rendered by js/main.js -->
+            </div>
+          </div>
+
+          <p class="results-status" id="results-status" role="status" aria-live="polite"></p>
+
+          <div class="project-grid" id="project-grid">
+            <!-- Project cards rendered from js/data.js → projects -->
+          </div>
+
+          <div class="empty-state" id="empty-state" hidden>
+            <p class="empty-state__title">No projects in this category yet</p>
+            <p class="empty-state__body">
+              The <strong data-empty-label>“All”</strong> filter has no matching projects.
+              Pick another filter.
+            </p>
+            <button type="button" class="button button--ghost button--small" id="empty-reset">
+              Show all projects
+            </button>
+          </div>
+          <noscript><p>Project cards and filters need JavaScript enabled.</p></noscript>
+        </div>
+      </section>
+
+      <!-- ===================== RESUME ===================== -->
+      <section class="section section--alt" id="resume" aria-labelledby="resume-title">
+        <div class="container">
+          <header class="section__head">
+            <p class="section__index" aria-hidden="true">04</p>
+            <h2 class="section__title" id="resume-title">Resume</h2>
+            <p class="section__summary">
+              My CV on one page: skills, projects, education and training.
+            </p>
+          </header>
+
+          <div class="resume-grid">
+            <div class="resume-copy">
+              <p class="resume-file">
+                <span class="resume-file__icon" aria-hidden="true">PDF</span>
+                <span>
+                  <strong>Mahmoud_Elhadad_CV.pdf</strong>
+                  <span class="resume-file__meta">1 page · 23 KB</span>
+                </span>
+              </p>
+              <ul class="resume-points">
+                <li>Backend Developer (PHP / Laravel)</li>
+                <li>Projects with source code on GitHub</li>
+                <li>B.Sc. Information Technology, Zagazig University, expected 2027</li>
+                <li>Laravel and web training at Bravo Programming Company</li>
+              </ul>
+              <div class="resume-actions">
+                <a class="button button--primary" href="assets/Mahmoud_Elhadad_CV.pdf" download="Mahmoud_Elhadad_CV.pdf">
+                  <span aria-hidden="true">↓</span> Download CV
+                </a>
+                <a class="button button--ghost" href="assets/Mahmoud_Elhadad_CV.pdf" target="_blank" rel="noopener noreferrer">
+                  View in browser<span class="visually-hidden"> (opens in a new tab)</span>
+                </a>
+              </div>
+            </div>
+
+            <a class="resume-preview" href="assets/Mahmoud_Elhadad_CV.pdf" target="_blank" rel="noopener noreferrer">
+              <img src="assets/cv-preview.jpg" width="1075" height="1521" loading="lazy"
+                   alt="First page of Mahmoud Elhadad's CV, showing his summary, technical skills, projects and education" />
+              <span class="visually-hidden">Open the CV as a PDF (opens in a new tab)</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CONTACT ===================== -->
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+          <header class="section__head">
+            <p class="section__index" aria-hidden="true">05</p>
+            <h2 class="section__title" id="contact-title">Contact</h2>
+            <p class="section__summary" data-bind="contact_summary">
+              Send me a message, or reach me directly by email or phone.
+            </p>
+          </header>
+
+          <div class="contact-grid">
+            <div class="contact-channels">
+              <h3 class="subhead">Direct</h3>
+              <ul class="contact-list" id="contact-list">
+                <!-- Rendered from js/data.js → profile.email + profile.links -->
+              </ul>
+
+              <div class="callout callout--info" role="note">
+                <p class="callout__title">How this form works</p>
+                <p>Sending opens your email app with the message already filled in. You can also reach me directly on WhatsApp.</p>
+              </div>
+            </div>
+
+            <form class="contact-form" id="contact-form" novalidate>
+              <h3 class="subhead">Send a message</h3>
+
+              <div class="field">
+                <label class="field__label" for="contact-name">Name</label>
+                <input
+                  class="field__input"
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                  aria-describedby="error-name"
+                  placeholder="Your name"
+                />
+                <p class="field__error" id="error-name" hidden></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="contact-email">Email</label>
+                <input
+                  class="field__input"
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  aria-describedby="error-email"
+                  placeholder="visitor@example.com"
+                />
+                <p class="field__error" id="error-email" hidden></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="contact-subject">Subject <span class="field__optional">(optional)</span></label>
+                <input
+                  class="field__input"
+                  id="contact-subject"
+                  name="subject"
+                  type="text"
+                  aria-describedby="error-subject"
+                  placeholder="Project enquiry"
+                />
+                <p class="field__error" id="error-subject" hidden></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="contact-message">Message</label>
+                <textarea
+                  class="field__input field__input--area"
+                  id="contact-message"
+                  name="message"
+                  rows="6"
+                  required
+                  aria-describedby="hint-message error-message"
+                  placeholder="A few sentences about what you need."></textarea>
+                <p class="field__hint" id="hint-message">At least 10 characters.</p>
+                <p class="field__error" id="error-message" hidden></p>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="button button--primary">Open in email app</button>
+                <button type="reset" class="button button--ghost" id="contact-reset">Clear form</button>
+              </div>
+
+              <p class="form-feedback form-feedback--error" id="form-error" role="alert" hidden></p>
+              <p class="form-feedback form-feedback--success" id="form-success" role="status" hidden></p>
+
+              <p class="form-footnote">
+                Fallback if your email app does not open:
+                <span id="fallback-mail">set your address in <code>js/data.js</code> → <code>profile.email</code></span>
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+      <div class="container site-footer__grid">
+        <div class="site-footer__brand">
+          <p class="site-footer__logo">
+            <span class="brand__mark" aria-hidden="true">&lt;/&gt;</span>
+            <span data-bind="name">Mahmoud Elhadad</span>
+          </p>
+          <p class="site-footer__role" data-bind="role_short">Backend Developer</p>
+          <p class="site-footer__tagline" data-bind="footer_tagline">
+            Backend Developer (PHP / Laravel) based in Zagazig, Egypt.
+          </p>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Footer navigation">
+          <p class="site-footer__col-title">On this page</p>
+          <ul class="site-footer__links">
+            <li><a class="footer-link" href="#about">About</a></li>
+            <li><a class="footer-link" href="#skills">Skills</a></li>
+            <li><a class="footer-link" href="#projects">Projects</a></li>
+            <li><a class="footer-link" href="#resume">Resume</a></li>
+            <li><a class="footer-link" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__col">
+          <p class="site-footer__col-title">Elsewhere</p>
+          <ul class="site-footer__social" id="footer-social">
+            <!-- Rendered from js/data.js → profile.links -->
+          </ul>
+        </div>
+
+        <div class="site-footer__col site-footer__col--cta">
+          <p class="site-footer__col-title">Get in touch</p>
+          <p class="site-footer__email" id="footer-email">
+            <!-- Rendered from js/data.js → profile.email -->
+          </p>
+          <a class="button button--primary button--small" href="#contact">Start a conversation</a>
+        </div>
+      </div>
+
+      <div class="container site-footer__base">
+        <p class="site-footer__legal">
+          © <span id="year">2026</span> <span data-bind="name">Mahmoud Elhadad</span>
+        </p>
+        <p class="site-footer__built">
+          Hand-built with plain HTML, CSS and JavaScript · Hosted on GitHub Pages
+        </p>
+        <a class="site-footer__top" href="#top">
+          Back to top <span class="site-footer__top-arrow" aria-hidden="true">↑</span>
+        </a>
+      </div>
+    </footer>
+
+    <!-- ===================== PROJECT DETAIL DIALOG ===================== -->
+    <div class="dialog" id="project-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" hidden>
+      <div class="dialog__backdrop" data-close-dialog></div>
+
+      <div class="dialog__panel" role="document" id="dialog-panel">
+        <header class="dialog__head">
+          <div class="dialog__eyebrow">
+            <p class="dialog__kicker" id="dialog-kicker">Project detail</p>
+            <p class="badge badge--sample" id="dialog-badge" hidden>Placeholder sample</p>
+          </div>
+          <h2 class="dialog__title" id="dialog-title">Project</h2>
+          <p class="dialog__meta" id="dialog-meta"></p>
+
+          <button type="button" class="dialog__close" id="dialog-close" data-close-dialog>
+            <span class="dialog__close-icon" aria-hidden="true">×</span>
+            <span class="visually-hidden">Close project details</span>
+          </button>
+        </header>
+
+        <div class="dialog__body" id="dialog-body" tabindex="-1">
+          <!-- Sections rendered by js/main.js; empty fields show a placeholder line -->
+        </div>
+
+        <footer class="dialog__foot">
+          <div class="dialog__links" id="dialog-links"></div>
+          <button type="button" class="button button--ghost button--small" data-close-dialog>
+            Close details
+          </button>
+        </footer>
+      </div>
+    </div>
+    <a class="to-top" id="to-top" href="#top" aria-label="Back to top" hidden>
+    <svg class="to-top__ring" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+      <circle class="to-top__track" cx="24" cy="24" r="21" />
+      <circle class="to-top__bar" id="to-top-bar" cx="24" cy="24" r="21" />
+    </svg>
+    <svg class="to-top__arrow" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+      <path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <span class="to-top__label" aria-hidden="true">Top</span>
+  </a>
+</body>
+</html>
